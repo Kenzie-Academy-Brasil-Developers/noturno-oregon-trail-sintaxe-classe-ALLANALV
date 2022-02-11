@@ -54,7 +54,7 @@ class Wagon {
         if (validation === true) {
             return true
         } else {
-            return `it' okay, Keep on !!`
+            return `it's okay, Keep on !!`
         }
     }
     totalFood = () => {
