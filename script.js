@@ -1,8 +1,14 @@
 class Traveler {
     constructor(name) {
-        this.name = name;
+        this._name = name;
         this._food = 1;
         this._isHealthy = true;
+    }
+    get name() {
+        return this._name
+    }
+    set name(newName) {
+        this._name = newName
     }
 
     get food() {
@@ -35,15 +41,29 @@ class Traveler {
 
 class Wagon {
     constructor(capacity) {
-        this.capaciy = capacity
-        this.passengers = []
+        this._capacity = capacity
+        this._passengers = []
+    }
+
+    get capacity() {
+        return this._capacity
+    }
+    set capacity(newValue) {
+        this._capacity = newValue
+    }
+
+    get passengers() {
+        return this._passengers
+    }
+    set passengers(newValue) {
+        this._passengers = newValue
     }
 
     getAvailableSeatCount = () => {
-        return this.capaciy - this.passengers.length
+        return this._capacity - this.passengers.length
     }
     join = (traveler) => {
-        if (this.passengers.length < this.capaciy) {
+        if (this.passengers.length < this._capacity) {
             this.passengers.push(traveler)
         } else {
             return `Sorry, all the seats are busy!!`
@@ -54,7 +74,7 @@ class Wagon {
         if (validation === true) {
             return true
         } else {
-            return `it's okay, Keep on !!`
+            return false
         }
     }
     totalFood = () => {
@@ -89,3 +109,5 @@ juan.eat(); // juan agora está com fome (doente)
 
 console.log(`${wagon.shouldQuarantine()} should be true since juan is sick`);
 console.log(`${wagon.totalFood()} should be 3`);
+
+console.log(juan.name)
